@@ -128,4 +128,20 @@ trait ApiResponseFormatTrait
     {
         Log::error($e->getMessage() . ' in file ' . $e->getFile() . ' at line ' . $e->getLine());
     }
+
+    private function JWTCustomResponse($message)
+    {
+        $response = [
+            'response' => [
+                'status'      => ApiStatus::ERROR,
+                'status_code' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'error'     => [
+                    'message'   => $message,
+                    'timestamp' => Carbon::now(),
+                ],
+            ]
+        ];
+
+        return response()->json($response, Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
 }

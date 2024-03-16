@@ -27,7 +27,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 });
 
 # All services api routes
-Route::group(['middleware' => ['ipwhitelist','api'],'prefix' => 'v1'], function ($router) {
+Route::group(['middleware' => ['ip-whitelist','api','jwt-verify'],'prefix' => 'v1'], function ($router) {
 
     Route::apiResource('roles', RoleController::class);
     Route::apiResource('ips', IPController::class);

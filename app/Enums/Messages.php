@@ -18,5 +18,6 @@ class Messages
     const INTERNAL_SERVER_ERROR_MESSAGE = "Internal Server Error";
     const UNAUTHORIZED_DOMAIN_OR_IP = "Unauthorized domain or IP";
     const LOGIN_SUCCESSFUL = "Login successful";
+    const INVALID_USER = "Invalid User";
     
 }
