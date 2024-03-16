@@ -16,5 +16,6 @@ class Messages
     const UNAUTHORIZED = 'Unauthorized';
     const LOGGED_OUT_SUCCESSFULLY = 'Successfully logged out';
     const INTERNAL_SERVER_ERROR_MESSAGE = "Internal Server Error";
+    const UNAUTHORIZED_DOMAIN_OR_IP = "Unauthorized domain or IP";
     
 }
