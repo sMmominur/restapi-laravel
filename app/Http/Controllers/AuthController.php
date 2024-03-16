@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\StoreUserRequest;
 use App\Http\Resources\LoginResource;
+use App\Http\Resources\UserResource;
 use App\Traits\ApiResponseFormatTrait;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Database\QueryException;
 class AuthController extends Controller
 {
     use ApiResponseFormatTrait;
@@ -31,9 +33,14 @@ class AuthController extends Controller
         return new LoginResource($token);
     }
 
-    public function register(LoginRequest $request){
-       
-       //TODO
+    public function register(StoreUserRequest $request)
+    {
+        try {
+            $item = User::create($request->all());
+            return (new UserResource($item))->additional($this->preparedResponse('store'));
+        } catch (QueryException $queryException) {
+            return $this->queryExceptionResponse($queryException);
+        }
     }
 
 
