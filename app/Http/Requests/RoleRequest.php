@@ -46,7 +46,7 @@ class RoleRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'name.required'       => 'The role name field is required.',
@@ -66,7 +66,7 @@ class RoleRequest extends FormRequest
      *
      * @return void
      */
-    protected function prepareForValidation()
+    protected function prepareForValidation(): void
     {
         // Generate slug from the 'name' field and replace spaces with hyphens
         $this->merge([

@@ -25,7 +25,7 @@ class StoreUserRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'name'     => 'required|max:100',
@@ -35,12 +35,12 @@ class StoreUserRequest extends FormRequest
     }
 
 
-     /**
+    /**
      * Get custom error messages for validation rules.
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'name.required'       => 'The name field is required.',
@@ -58,7 +58,4 @@ class StoreUserRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json($this->validationFailedResponse($validator->errors()), Response::HTTP_UNPROCESSABLE_ENTITY));
     }
-
-
-    
 }

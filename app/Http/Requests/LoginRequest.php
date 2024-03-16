@@ -25,7 +25,7 @@ class LoginRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'email' => 'required|email:rfc,dns|max:100',
@@ -34,12 +34,12 @@ class LoginRequest extends FormRequest
     }
 
 
-     /**
+    /**
      * Get custom error messages for validation rules.
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'email.required'      => 'The email address field is required.',
@@ -55,7 +55,4 @@ class LoginRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json($this->validationFailedResponse($validator->errors()), Response::HTTP_UNPROCESSABLE_ENTITY));
     }
-
-
-    
 }

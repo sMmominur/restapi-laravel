@@ -41,7 +41,7 @@ class IpRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'ip_address.required' => 'IP address field is required.',
