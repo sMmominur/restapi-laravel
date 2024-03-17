@@ -1,0 +1,951 @@
+{
+	"info": {
+		"_postman_id": "b8fb4f44-8602-40ba-99ec-573daf0a1996",
+		"name": "Laravel Rest APIs",
+		"description": "StartFragmentThis project is built using Laravel version 11 and focuses on REST API design. It implements best practices and emphasizes separating requests and responses while adhering to various design principles such as DRY (Don't Repeat Yourself), SOLID, and Separation of Concerns.EndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29494647",
+		"_collection_link": "https://www.postman.com/mominur23/workspace/laravel-rest/collection/29494647-b8fb4f44-8602-40ba-99ec-573daf0a1996?action=share&source=collection_link&creator=29494647"
+	},
+	"item": [
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "index",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/roles",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"roles"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "response-1",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/roles",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Mar 2024 14:26:17 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Mar 2024 14:26:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Super Admin\",\n            \"slug\": \"super-admin\",\n            \"status\": \"active\",\n            \"description\": \"Super Administrator Role\",\n            \"created_at\": \"15 Mar 2024 08:19 AM\",\n            \"updated_at\": \"15 Mar 2024 08:19 AM\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Admin\",\n            \"slug\": \"admin\",\n            \"status\": \"active\",\n            \"description\": \"Administrator Role\",\n            \"created_at\": \"15 Mar 2024 08:19 AM\",\n            \"updated_at\": \"15 Mar 2024 08:19 AM\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Teacher\",\n            \"slug\": \"teacher\",\n            \"status\": \"active\",\n            \"description\": \"Teacher Role\",\n            \"created_at\": \"15 Mar 2024 08:19 AM\",\n            \"updated_at\": \"15 Mar 2024 08:19 AM\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Principal\",\n            \"slug\": \"principal\",\n            \"status\": \"active\",\n            \"description\": \"Principal Role\",\n            \"created_at\": \"15 Mar 2024 08:19 AM\",\n            \"updated_at\": \"15 Mar 2024 08:19 AM\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Student\",\n            \"slug\": \"student\",\n            \"status\": \"active\",\n            \"description\": \"Student Role\",\n            \"created_at\": \"15 Mar 2024 08:19 AM\",\n            \"updated_at\": \"15 Mar 2024 08:19 AM\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Guest\",\n            \"slug\": \"guest\",\n            \"status\": \"active\",\n            \"description\": \"Guest Role\",\n            \"created_at\": \"15 Mar 2024 08:19 AM\",\n            \"updated_at\": \"15 Mar 2024 08:19 AM\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Test name\",\n            \"slug\": \"test-name\",\n            \"status\": \"active\",\n            \"description\": \"Test role\",\n            \"created_at\": \"15 Mar 2024 12:50 PM\",\n            \"updated_at\": \"15 Mar 2024 12:50 PM\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Writter\",\n            \"slug\": \"writter\",\n            \"status\": \"active\",\n            \"description\": \"All the previllages\",\n            \"created_at\": \"15 Mar 2024 01:33 PM\",\n            \"updated_at\": \"15 Mar 2024 02:04 PM\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://127.0.0.1:8000/api/v1/roles?page=1\",\n        \"last\": \"http://127.0.0.1:8000/api/v1/roles?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/v1/roles?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://127.0.0.1:8000/api/v1/roles\",\n        \"per_page\": 10,\n        \"to\": 8,\n        \"total\": 8\n    },\n    \"response\": {\n        \"status\": \"success\",\n        \"status_code\": 200,\n        \"message\": \"Records retrieved successfully\"\n    }\n}"
+						},
+						{
+							"name": "response-2",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/roles?status=inactive",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "inactive"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Mar 2024 14:27:25 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Mar 2024 14:27:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 6,\n            \"name\": \"Guest\",\n            \"slug\": \"guest\",\n            \"status\": \"inactive\",\n            \"description\": \"Guest Role\",\n            \"created_at\": \"15 Mar 2024 08:19 AM\",\n            \"updated_at\": \"15 Mar 2024 08:19 AM\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Writter\",\n            \"slug\": \"writter\",\n            \"status\": \"inactive\",\n            \"description\": \"All the previllages\",\n            \"created_at\": \"15 Mar 2024 01:33 PM\",\n            \"updated_at\": \"15 Mar 2024 02:04 PM\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://127.0.0.1:8000/api/v1/roles?page=1\",\n        \"last\": \"http://127.0.0.1:8000/api/v1/roles?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/v1/roles?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://127.0.0.1:8000/api/v1/roles\",\n        \"per_page\": 10,\n        \"to\": 2,\n        \"total\": 2\n    },\n    \"response\": {\n        \"status\": \"success\",\n        \"status_code\": 200,\n        \"message\": \"Records retrieved successfully\"\n    }\n}"
+						},
+						{
+							"name": "response-3",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/v1/roles?slug=admin",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles"
+									],
+									"query": [
+										{
+											"key": "slug",
+											"value": "admin"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Mar 2024 14:28:28 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Mar 2024 14:28:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"Admin\",\n            \"slug\": \"admin\",\n            \"status\": \"active\",\n            \"description\": \"Administrator Role\",\n            \"created_at\": \"15 Mar 2024 08:19 AM\",\n            \"updated_at\": \"15 Mar 2024 08:19 AM\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://127.0.0.1:8000/api/v1/roles?page=1\",\n        \"last\": \"http://127.0.0.1:8000/api/v1/roles?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/v1/roles?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://127.0.0.1:8000/api/v1/roles\",\n        \"per_page\": 10,\n        \"to\": 1,\n        \"total\": 1\n    },\n    \"response\": {\n        \"status\": \"success\",\n        \"status_code\": 200,\n        \"message\": \"Records retrieved successfully\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Tester\",\r\n  \"status\": \"active\",\r\n  \"description\": \"Tester role\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/roles",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Writter\",\r\n  \"status\": \"active\",\r\n  \"description\": \"All the previllages\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/roles/8",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"roles",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/roles/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"roles",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/roles/8",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"roles",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "IPList",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/ips",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ip_address\": \"127.0.0.1\",\r\n  \"status\": \"active\",\r\n  \"ip_type\" :\"IPv4\",\r\n  \"remarks\": \"My Home IP\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/ips",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ip_address\": \"192.168.0.101\",\r\n  \"status\": \"active\",\r\n  \"ip_type\" :\"IPv4\",\r\n  \"remarks\": \"My Home IP\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/ips/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ips",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/ips/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ips",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/ips/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ips",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "user1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success-response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "user1@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Mar 2024 14:21:28 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Mar 2024 14:21:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"response\": {\n        \"status\": \"success\",\n        \"status_code\": 200,\n        \"message\": \"Login successful\",\n        \"data\": {\n            \"token_type\": \"bearer\",\n            \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3MTA2ODUyODcsImV4cCI6MTcxMDY4ODg4NywibmJmIjoxNzEwNjg1Mjg3LCJqdGkiOiJvOVBjUzIyT2ZkSUJGcXRTIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.6YsgCnyXYFR77WLiR5Xmn-jV9tyfYlJ56IhxQYKev_0\",\n            \"expires_in\": 3600\n        }\n    }\n}"
+						},
+						{
+							"name": "unauthorized-response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "user1@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Mar 2024 14:22:17 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Mar 2024 14:22:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"response\": {\n        \"status\": \"error\",\n        \"status_code\": 401,\n        \"error\": {\n            \"message\": \"Unauthorized\",\n            \"timestamp\": \"2024-03-17T14:22:17.627750Z\"\n        }\n    }\n}"
+						},
+						{
+							"name": "validation-failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "user1@gmail.com44",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Mar 2024 14:22:49 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Mar 2024 14:22:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"response\": {\n        \"status\": \"error\",\n        \"status_code\": 422,\n        \"error\": {\n            \"message\": \"Validation failed\",\n            \"timestamp\": \"2024-03-17T14:22:49.332003Z\",\n            \"details\": {\n                \"email\": [\n                    \"The email address must be a valid email address\"\n                ]\n            }\n        }\n    }\n}"
+						},
+						{
+							"name": "validation-failed-2",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "user1@gmail.com44",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Mar 2024 14:23:49 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 17 Mar 2024 14:23:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.4"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"response\": {\n        \"status\": \"error\",\n        \"status_code\": 422,\n        \"error\": {\n            \"message\": \"Validation failed\",\n            \"timestamp\": \"2024-03-17T14:23:49.396391Z\",\n            \"details\": {\n                \"email\": [\n                    \"The email address field is required.\"\n                ]\n            }\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Mominur Rahman\",\r\n  \"email\": \"mominur.rahman@gmail.com\",\r\n  \"password\": \"epNc7hKuEBexKQj\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
