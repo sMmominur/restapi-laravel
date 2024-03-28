@@ -2,7 +2,6 @@
 
 namespace App\Utils;
 
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Enums\ApiStatus;
 use App\Enums\Messages;
@@ -10,60 +9,39 @@ use Carbon\Carbon;
 
 class APIResponse
 {
-    public static function notFound()
+    private static function prepareResponseFormat($status, $statusCode, $message)
     {
-        return response()->json([
+        $response = [
             'response' => [
-                'status' => ApiStatus::ERROR,
-                'status_code' => Response::HTTP_NOT_FOUND,
-                'error' => [
-                    'message' => Messages::RESOURCE_NOT_FOUND,
+                'status'      => $status,
+                'status_code' => $statusCode,
+                'error'       => [
+                    'message'   => $message,
                     'timestamp' => Carbon::now(),
                 ],
-            ],
-        ], Response::HTTP_NOT_FOUND);
+            ]
+        ];
+
+        return response()->json($response, $statusCode);
     }
 
-    public static function methodNotAllowed(Request $request)
+    public static function showNotFoundResponse()
     {
-        return response()->json([
-            'response' => [
-                'status' => ApiStatus::ERROR,
-                'status_code' => Response::HTTP_METHOD_NOT_ALLOWED,
-                'error' => [
-                    'message' => "Method '{$request->method()}' is not allowed for this endpoint.",
-                    'timestamp' => Carbon::now(),
-                ],
-            ],
-        ], Response::HTTP_METHOD_NOT_ALLOWED);
+        return self::prepareResponseFormat(ApiStatus::ERROR, Response::HTTP_NOT_FOUND, Messages::RESOURCE_NOT_FOUND);
     }
 
-    public static function internalServerError()
+    public static function showMethodNotAllowedResponse()
     {
-        return response()->json([
-            'response' => [
-                'status' => ApiStatus::ERROR,
-                'status_code' => Response::HTTP_INTERNAL_SERVER_ERROR,
-                'error' => [
-                    'message' => Messages::INTERNAL_SERVER_ERROR_MESSAGE,
-                    'timestamp' => Carbon::now(),
-                ],
-            ],
-        ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        return self::prepareResponseFormat(ApiStatus::ERROR, Response::HTTP_METHOD_NOT_ALLOWED, Messages::METHOD_NOT_ALLOWED_MSG);
     }
 
-    public static function queryException()
+    public static function showInternalServerErrorResponse()
     {
-        return response()->json([
-            'response' => [
-                'status' => ApiStatus::ERROR,
-                'status_code' => Response::HTTP_INTERNAL_SERVER_ERROR,
-                'error' => [
-                    'message' => "Database query error",
-                    'timestamp' => Carbon::now(),
-                ],
-            ],
-        ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        return self::prepareResponseFormat(ApiStatus::ERROR, Response::HTTP_INTERNAL_SERVER_ERROR, Messages::INTERNAL_SERVER_ERROR_MESSAGE);
     }
 
+    public static function showQueryExceptionResponse()
+    {
+        return self::prepareResponseFormat(ApiStatus::ERROR, Response::HTTP_INTERNAL_SERVER_ERROR, "Database query error");
+    }
 }

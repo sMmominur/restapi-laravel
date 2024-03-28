@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-
 use Illuminate\Support\Facades\Log;
 
 use App\Utils\APIResponse;
@@ -28,31 +27,28 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
 
-        // Overwrite the default behavior of NotFoundHttpException for API requests
+
         $exceptions->render(function (NotFoundHttpException $e, Request $request) {
             if ($request->is('api/*')) {
-                return APIResponse::notFound();
+                return APIResponse::showNotFoundResponse();
             }
         });
 
-        // Overwrite the default behavior of MethodNotAllowedHttpException for API requests
         $exceptions->render(function (MethodNotAllowedHttpException $e, Request $request) {
             if ($request->is('api/*')) {
-                return APIResponse::methodNotAllowed($request);
+                return APIResponse::showMethodNotAllowedResponse();
             }
         });
 
-        // Overwrite the default behavior of Internal Server Error for API requests
         $exceptions->render(function (HttpException $e, Request $request) {
             if ($request->is('api/*')) {
-                return APIResponse::internalServerError();
+                return APIResponse::showInternalServerErrorResponse();
             }
         });
 
         $exceptions->render(function (QueryException $e, Request $request) {
             if ($request->is('api/*')) {
-                return APIResponse::queryException();
+                return APIResponse::showQueryExceptionResponse();
             }
         });
-        
     })->create();

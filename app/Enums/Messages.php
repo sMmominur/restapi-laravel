@@ -20,5 +20,6 @@ class Messages
     const LOGIN_SUCCESSFUL = "Login successful";
     const INVALID_USER = "Invalid User";
     const RESOURCE_NOT_FOUND = "Resource Not Found";
+    const METHOD_NOT_ALLOWED_MSG = "Method not allowed for this endpoint.";
     
 }
