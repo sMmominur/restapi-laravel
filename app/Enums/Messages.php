@@ -19,5 +19,6 @@ class Messages
     const UNAUTHORIZED_DOMAIN_OR_IP = "Unauthorized domain or IP";
     const LOGIN_SUCCESSFUL = "Login successful";
     const INVALID_USER = "Invalid User";
+    const RESOURCE_NOT_FOUND = "Resource Not Found";
     
 }
