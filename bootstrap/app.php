@@ -3,12 +3,14 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Database\QueryException;
 use App\Http\Middleware\IPAuthorizationMiddleware;
 use App\Http\Middleware\JWTTokenMiddleware;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+
 use Illuminate\Support\Facades\Log;
 
 use App\Utils\APIResponse;
@@ -47,4 +49,10 @@ return Application::configure(basePath: dirname(__DIR__))
             }
         });
 
+        $exceptions->render(function (QueryException $e, Request $request) {
+            if ($request->is('api/*')) {
+                return APIResponse::queryException();
+            }
+        });
+        
     })->create();

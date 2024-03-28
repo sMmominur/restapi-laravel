@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Enums\ApiStatus;
 use App\Enums\Messages;
 use Carbon\Carbon;
-use GuzzleHttp\Psr7\Message;
 
 class APIResponse
 {
@@ -47,6 +46,20 @@ class APIResponse
                 'status_code' => Response::HTTP_INTERNAL_SERVER_ERROR,
                 'error' => [
                     'message' => Messages::INTERNAL_SERVER_ERROR_MESSAGE,
+                    'timestamp' => Carbon::now(),
+                ],
+            ],
+        ], Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+
+    public static function queryException()
+    {
+        return response()->json([
+            'response' => [
+                'status' => ApiStatus::ERROR,
+                'status_code' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'error' => [
+                    'message' => "Database query error",
                     'timestamp' => Carbon::now(),
                 ],
             ],
