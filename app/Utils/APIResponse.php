@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Enums\ApiStatus;
 use App\Enums\Messages;
 use Carbon\Carbon;
+use GuzzleHttp\Psr7\Message;
 
 class APIResponse
 {
@@ -37,4 +38,19 @@ class APIResponse
             ],
         ], Response::HTTP_METHOD_NOT_ALLOWED);
     }
+
+    public static function internalServerError()
+    {
+        return response()->json([
+            'response' => [
+                'status' => ApiStatus::ERROR,
+                'status_code' => Response::HTTP_INTERNAL_SERVER_ERROR,
+                'error' => [
+                    'message' => Messages::INTERNAL_SERVER_ERROR_MESSAGE,
+                    'timestamp' => Carbon::now(),
+                ],
+            ],
+        ], Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+
 }

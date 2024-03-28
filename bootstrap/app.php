@@ -8,6 +8,7 @@ use App\Http\Middleware\JWTTokenMiddleware;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Support\Facades\Log;
 
 use App\Utils\APIResponse;
@@ -38,5 +39,12 @@ return Application::configure(basePath: dirname(__DIR__))
                 return APIResponse::methodNotAllowed($request);
             }
         });
-        
+
+        // Overwrite the default behavior of Internal Server Error for API requests
+        $exceptions->render(function (HttpException $e, Request $request) {
+            if ($request->is('api/*')) {
+                return APIResponse::internalServerError();
+            }
+        });
+
     })->create();
