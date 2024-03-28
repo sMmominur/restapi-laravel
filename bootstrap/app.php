@@ -7,6 +7,9 @@ use App\Http\Middleware\IPAuthorizationMiddleware;
 use App\Http\Middleware\JWTTokenMiddleware;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Illuminate\Support\Facades\Log;
+
 use App\Utils\APIResponse;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -28,4 +31,12 @@ return Application::configure(basePath: dirname(__DIR__))
                 return APIResponse::notFound();
             }
         });
+
+        // Overwrite the default behavior of MethodNotAllowedHttpException for API requests
+        $exceptions->render(function (MethodNotAllowedHttpException $e, Request $request) {
+            if ($request->is('api/*')) {
+                return APIResponse::methodNotAllowed($request);
+            }
+        });
+        
     })->create();

@@ -2,6 +2,7 @@
 
 namespace App\Utils;
 
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Enums\ApiStatus;
 use App\Enums\Messages;
@@ -21,5 +22,19 @@ class APIResponse
                 ],
             ],
         ], Response::HTTP_NOT_FOUND);
+    }
+
+    public static function methodNotAllowed(Request $request)
+    {
+        return response()->json([
+            'response' => [
+                'status' => ApiStatus::ERROR,
+                'status_code' => Response::HTTP_METHOD_NOT_ALLOWED,
+                'error' => [
+                    'message' => "Method '{$request->method()}' is not allowed for this endpoint.",
+                    'timestamp' => Carbon::now(),
+                ],
+            ],
+        ], Response::HTTP_METHOD_NOT_ALLOWED);
     }
 }
