@@ -2,16 +2,17 @@
 
 namespace App\Services;
 
+use Exception;
+use App\Traits\Ownerable;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Traits\ApiResponseFormatTrait;
 use Illuminate\Database\QueryException;
-use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class CrudController extends Controller
 {
-    use ApiResponseFormatTrait;
+    use ApiResponseFormatTrait, Ownerable;
     protected $model;
     protected $resource;
     protected $requestClass;
@@ -42,6 +43,13 @@ class CrudController extends Controller
     {
         try {
             $item = $this->model::findOrFail($id);
+
+            if (isset($this->model::$isEnableResourceOwnerCheck) && $this->model::$isEnableResourceOwnerCheck === true) {
+                if (!$this->isOwner($item)) {
+                    return $this->forbiddenAccessResponse();
+                }
+            }
+
             return (new $this->resource($item))->additional($this->preparedResponse('show'));
         } catch (ModelNotFoundException $modelException) {
             return $this->recordNotFoundResponse($modelException);
@@ -55,6 +63,13 @@ class CrudController extends Controller
         try {
             $request = app($this->requestClass);
             $item = $this->model::findOrFail($id);
+
+            if (isset($this->model::$isEnableResourceOwnerCheck) && $this->model::$isEnableResourceOwnerCheck === true) {
+                if (!$this->isOwner($item)) {
+                    return $this->forbiddenAccessResponse();
+                }
+            }
+
             $item->update($request->all());
             return (new $this->resource($item))->additional($this->preparedResponse('update'));
         } catch (ModelNotFoundException $modelException) {
@@ -68,6 +83,13 @@ class CrudController extends Controller
     {
         try {
             $item = $this->model::findOrFail($id);
+
+            if (isset($this->model::$isEnableResourceOwnerCheck) && $this->model::$isEnableResourceOwnerCheck === true) {
+                if (!$this->isOwner($item)) {
+                    return $this->forbiddenAccessResponse();
+                }
+            }
+
             $item->status = 'inactive';
             $item->save();
             return (new $this->resource($item))->additional($this->preparedResponse('destroy'));
