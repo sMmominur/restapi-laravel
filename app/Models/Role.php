@@ -15,7 +15,7 @@ class Role extends Model
     protected $fillable = ['name','slug','status','description'];
     protected $perPage = 10;
 
-    protected static $filterable = ['slug' => 'type_id', 'status' => 'status', 'name' => 'name'];
+    protected static $filterable = ['slug' => 'slug', 'status' => 'status', 'name' => 'name'];
 
     public static $isDataFilterAuthorizationEnabled = false;
     public static $isEnableResourceOwnerCheck = false;
